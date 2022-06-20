@@ -36,7 +36,7 @@ It has a function to remove noise that may be included in the GPIO signal, and c
   </tbody>
 </table>
 
-## Parameter discription
+## Parameter description
 
 ### Output signal parameters
 <table>
