@@ -1,0 +1,14 @@
+@startuml
+
+usecase "/dio_ros_driver"
+usecase "/engage_button_manager" #LightCoral
+usecase "/delivery_reservation_button_manager" #LightCoral
+usecase "/engage_srv_converter"
+usecase "/autoware_state_machine"
+
+(/dio_ros_driver) --> (/engage_button_manager) : /dio/din0
+(/engage_button_manager) --> (/engage_srv_converter) : /engage_button_manager/output/engage_button
+(/dio_ros_driver) --> (/delivery_reservation_button_manager) : /dio/din1
+(/delivery_reservation_button_manager) --> (/autoware_state_machine) : /delivery_reservation_button_manager/output/delivery_reservation_button
+
+@enduml
