@@ -1,14 +1,14 @@
 @startuml
 
 [*] --> BUTTON_OFF_WAIT
-BUTTON_OFF_WAIT --> BUTTON_OFF : timeout
+BUTTON_OFF_WAIT --> BUTTON_OFF : T0 timeout
 BUTTON_OFF --> BUTTON_ON_WAIT : receive ON signal
 BUTTON_ON_WAIT --> BUTTON_OFF_WAIT : receive OFF signal
-BUTTON_ON_WAIT --> BUTTON_ON : timeout
-BUTTON_ON --> BUTTON_ON_STACK : timeout
+BUTTON_ON_WAIT --> BUTTON_ON : T1 timeout
+BUTTON_ON --> BUTTON_ON_STACK : T3 timeout
 BUTTON_ON --> BUTTON_OFF_AFTER_ON_WAIT : receive OFF signal
 BUTTON_ON_STACK --> BUTTON_OFF_WAIT : receive OFF signal
-BUTTON_OFF_AFTER_ON_WAIT --> BUTTON_OFF_WAIT : timeout
+BUTTON_OFF_AFTER_ON_WAIT --> BUTTON_OFF_WAIT : T2 timeout
 
 BUTTON_OFF_WAIT : Checks that the ON signal is not stuck.
 

@@ -58,24 +58,29 @@ It has a function to remove noise that may be included in the GPIO signal, and c
 <table>
   <thead>
     <tr>
+      <th scope="col">ID</th>
       <th scope="col">Name</th>
       <th scope="col">Description</th>
     </tr>
   </thead>
   <tbody>
     <tr>
+      <td>T0</td>
       <td>not_pressed_period_threshold</td>
       <td>This defines the minimum time it takes for a button to be pressed.</td>
     <tr>
     <tr>
+      <td>T1</td>
       <td>pressed_period_threshold</td>
       <td>This defines the minimum duration of button press.</td>
     <tr>
     <tr>
+      <td>T2</td>
       <td>not_pressed_period_threshold_after_pressed</td>
       <td>This defines the minimum period during which the button press is released.</td>
     <tr>
     <tr>
+      <td>T3</td>
       <td>max_allowable_period_of_pressing</td>
       <td>This defines the maximum expected press period.</td>
     <tr>
