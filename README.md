@@ -1,4 +1,4 @@
-# button_manager
+# Button manager
 
 ## Overview
 This node is a driver that recognizes GPIO input signals as button presses.
