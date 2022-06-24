@@ -14,6 +14,8 @@ It has a function to remove noise that may be included in the GPIO signal, and c
     - `(launch_arg button_name)_manager/output/(launch_arg button_name)` : Output indicating that the button is pressed.
 
 ## Node Graph
+In this figure, `/engage_button_manager` and `/delivery_reservation_button_manager` are both execution node names of this node.
+The name is changed with  a launch argument `button_name`.
 ![node graph](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/eve-autonomy/button_manager/docs/node_graph.pu)
 
 ## Launch arguments
