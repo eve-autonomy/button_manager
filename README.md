@@ -52,7 +52,7 @@ The name is changed with  a launch argument `button_name`.
   <tbody>
     <tr>
       <td>active_polarity</td>
-      <td>This inverts the ON / OFF of the output signal.</td>
+      <td>This inverts mutually high (ON) and low (OFF) values of a DI signal.</td>
     <tr>
   </tbody>
 </table>
