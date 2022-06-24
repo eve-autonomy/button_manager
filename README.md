@@ -3,7 +3,8 @@
 ## Overview
 This node manages DI signals from`/dio_ros_driver` as button manipulation.
 
-It has a function to remove noise that may be included in the GPIO signal, and can prevent malfunction of button input.
+This has a noise reduction from GPIO signals.
+It aim to prevent malfunction of button manipulation.
 
 ## Input and Output
 - input
