@@ -22,8 +22,8 @@ The name is changed with  a launch argument `button_name`.
 ## Launch arguments
 |Name|Description|
 |:---|:----------|
-|button_name|This argument modifies the node name, namespace, and topic name.|
-|port_name|This argument specifies the GPIO port name.|
+|button_name|This argument modifies the node name, namespace, and topic name.<br>Set the name `***_button` as the value.|
+|port_name|This argument specifies the GPIO port name. Select `dio[0-3]` as the value.|
 
 ## Parameter description
 
