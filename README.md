@@ -9,7 +9,7 @@ It aim to prevent malfunction of button manipulation.
 ## Input and Output
 - input
   - from [dio_ros_driver](https://github.com/tier4/dio_ros_driver)
-    - `/dio/din[0-3]` \[[dio_ros_driver/msg/DIOPort](https://github.com/tier4/dio_ros_driver/blob/develop/ros2/msg/DIOPort.msg)\]:<br>GPIO input topic. It is output at regular intervals regardless of whether the button is ON or OFF.<br>Which of `din[0-3]` is chosen depends on the `port_name` of the [Launch arguments](#launch-arguments).
+    - `/dio/din[0-7]` \[[dio_ros_driver/msg/DIOPort](https://github.com/tier4/dio_ros_driver/blob/develop/ros2/msg/DIOPort.msg)\]:<br>GPIO input topic. It is output at regular intervals regardless of whether the button is ON or OFF.<br>Which of `din[0-7]` is chosen depends on the `port_name` of the [Launch arguments](#launch-arguments).
 - output
   - to [engage_srv_converter](https://github.com/eve-autonomy/engage_srv_converter) and [autoware_state_machine](https://github.com/eve-autonomy/autoware_state_machine)
     - `(button_name)_manager/output/(button_name)` \[[autoware_state_machine_msgs/msg/vehicle_button](https://github.com/eve-autonomy/autoware_state_machine_msgs/blob/main/msg/VehicleButton.msg)\]:<br>Output indicating that the button is pressed.<br>See [Launch arguments](#launch-arguments) for `button_name`.
@@ -23,7 +23,7 @@ The name is changed with  a launch argument `button_name`.
 |Name|Description|
 |:---|:----------|
 |button_name|This argument modifies the node name, namespace, and topic name.<br>Set the name `***_button` as the value.|
-|port_name|This argument specifies the GPIO port name. Select `dio[0-3]` as the value.|
+|port_name|This argument specifies the GPIO port name. Select `dio[0-7]` as the value.|
 
 ## Parameter description
 
