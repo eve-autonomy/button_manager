@@ -85,7 +85,7 @@ The name is changed with  a launch argument `button_name`.
     <tr>
       <td>T3</td>
       <td>max_allowable_period_of_pressing</td>
-      <td>This defines the maximum expected press period.</td>
+      <td>This defines a maximum time, until it takes for a button to be recognized as one time pressure. If someone presses the button over the time, this node recognized as malfunction.</td>
     <tr>
   </tbody>
 </table>
