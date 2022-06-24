@@ -80,7 +80,7 @@ The name is changed with  a launch argument `button_name`.
     <tr>
       <td>T2</td>
       <td>not_pressed_period_threshold_after_pressed</td>
-      <td>This defines the minimum period during which the button press is released.</td>
+      <td>This defines a minimum time to move to next button action, until it takes for a button to be recognized as not pressed.</td>
     <tr>
     <tr>
       <td>T3</td>
