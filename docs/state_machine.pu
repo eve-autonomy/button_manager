@@ -1,0 +1,28 @@
+@startuml
+
+[*] --> BUTTON_OFF_WAIT
+BUTTON_OFF_WAIT --> BUTTON_OFF : T0 timeout
+BUTTON_OFF --> BUTTON_ON_WAIT : receive ON signal
+BUTTON_ON_WAIT --> BUTTON_OFF_WAIT : receive OFF signal
+BUTTON_ON_WAIT --> BUTTON_ON : T1 timeout
+BUTTON_ON --> BUTTON_ON_STACK : T3 timeout
+BUTTON_ON --> BUTTON_OFF_AFTER_ON_WAIT : receive OFF signal
+BUTTON_ON_STACK --> BUTTON_OFF_WAIT : receive OFF signal
+BUTTON_OFF_AFTER_ON_WAIT --> BUTTON_OFF_WAIT : T2 timeout
+
+BUTTON_OFF_WAIT : Checks that the ON signal is not stuck.
+
+BUTTON_OFF : Waits for the ON signal.
+
+BUTTON_ON_WAIT : Removes momentary ON signal noise.
+
+BUTTON_ON : Waits for the button to be released.
+
+BUTTON_ON_STACK : Button input is abnormal.
+BUTTON_ON_STACK : The input is too long.
+
+BUTTON_OFF_AFTER_ON_WAIT : Button input is successful.
+note bottom of BUTTON_OFF_AFTER_ON_WAIT {
+  It outputs the button pressing signal. 
+}
+@enduml
