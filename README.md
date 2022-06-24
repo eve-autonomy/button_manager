@@ -1,7 +1,7 @@
 # Button manager
 
 ## Overview
-This node is a driver that recognizes GPIO input signals as button presses.
+This node manages DI signals from`/dio_ros_driver` as button manipulation.
 
 It has a function to remove noise that may be included in the GPIO signal, and can prevent malfunction of button input.
 
