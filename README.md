@@ -75,7 +75,7 @@ The name is changed with  a launch argument `button_name`.
     <tr>
       <td>T1</td>
       <td>pressed_period_threshold</td>
-      <td>This defines the minimum duration of button press.</td>
+      <td>This defines a minimum time, until it takes for a button to be recognized as PRESSED.</td>
     <tr>
     <tr>
       <td>T2</td>
