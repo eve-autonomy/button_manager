@@ -31,7 +31,7 @@ The name is changed with  a launch argument `button_name`.
 
 |Name|Description|
 |:---|:----------|
-|active_polarity|This inverts mutually high (ON) and low (OFF) values of a DI signal.|
+|active_polarity|This inverts mutually high (ON) and low (OFF) values of a DI signal.<br>- True: With inversion. - False: No inversion.|
 
 ### GPIO noise reduction parameters
 |ID|Name|Description|
