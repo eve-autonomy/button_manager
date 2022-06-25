@@ -17,7 +17,7 @@ It aim to prevent malfunction of button manipulation.
 ## Node Graph
 In this figure, `/engage_button_manager` and `/delivery_reservation_button_manager` are both execution node names of this node.
 The name is changed with  a launch argument `button_name`.
-![node graph](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/eve-autonomy/button_manager/main/docs/node_graph.pu)
+![node graph](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/eve-autonomy/button_manager/main/docs/node_graph.pu)
 
 ## Launch arguments
 |Name|Description|
@@ -42,5 +42,5 @@ The name is changed with  a launch argument `button_name`.
 |T3|max_allowable_period_of_pressing|This defines a maximum time, until it takes for a button to be recognized as one time pressure. If someone presses the button over the time, this node recognized as malfunction.|
 
 ## Button press state transition
-![state_machine](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/eve-autonomy/button_manager/main/docs/state_machine.pu)
+![state_machine](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/eve-autonomy/button_manager/main/docs/state_machine.pu)
 
