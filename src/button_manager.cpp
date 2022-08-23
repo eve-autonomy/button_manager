@@ -43,6 +43,8 @@ ButtonManager::ButtonManager(const rclcpp::NodeOptions & options = rclcpp::NodeO
   max_allowable_period_of_pressing_ = this->declare_parameter<double>(
     "max_allowable_period_of_pressing", 1.0);
   active_polarity_ = this->declare_parameter<bool>("active_polarity", false);
+  is_publish_while_pressing_button_ = this->declare_parameter<bool>(
+    "is_publish_while_pressing_button", false);
 
   base_time_ = this->now();
 }
@@ -136,6 +138,9 @@ void ButtonManager::ButtonState(const bool button_status_change)
       }
 
       hold_down_time_ = elapsed_time;
+      if (is_publish_while_pressing_button_) {
+        PulishButtonPressNotification(false, elapsed_time);
+      }
       break;
     case BUTTON_OFF_AFTER_ON_WAIT:
       if (button_status_change == true) {

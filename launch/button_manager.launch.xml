@@ -17,9 +17,11 @@
 <launch>
     <arg name="button_name" default="button" />
     <arg name="port_name" default="din0" />
+    <arg name="is_publish_while_pressing_button" default="false" />
 
     <node pkg="button_manager" exec="button_manager_node" name="$(var button_name)_manager" output="screen">
       <param name="use_sim_time" value="$(env AW_ROS2_USE_SIM_TIME false)" />
+      <param name="is_publish_while_pressing_button" value="$(var is_publish_while_pressing_button)" />
       <remap from="button_out" to="~/output/$(var button_name)" />
       <remap from="button_in" to="/dio/$(var port_name)" />
       <param from="$(find-pkg-share button_manager)/config/button_manager.param.yaml" />
