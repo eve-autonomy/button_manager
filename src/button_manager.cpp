@@ -134,6 +134,8 @@ void ButtonManager::ButtonState(const bool button_status_change)
           "[ButtonManager::ButtonState][button:%s]state change  : %d",
           get_name(), button_status_);
       }
+
+      hold_down_time_ = elapsed_time;
       break;
     case BUTTON_OFF_AFTER_ON_WAIT:
       if (button_status_change == true) {
@@ -145,10 +147,8 @@ void ButtonManager::ButtonState(const bool button_status_change)
           get_name(), button_status_);
       } else {
         if (elapsed_time >= not_pressed_period_threshold_after_pressed_) {
-          auto msg = std::make_unique<autoware_state_machine_msgs::msg::VehicleButton>();
-          msg->data = true;
           button_status_ = BUTTON_OFF_WAIT;
-          pub_button_->publish(std::move(msg));
+          PulishButtonPressNotification(true, hold_down_time_);
           RCLCPP_INFO_THROTTLE(
             get_logger(),
             *get_clock(), 1.0,
@@ -200,6 +200,15 @@ bool ButtonManager::checkStateChangeWithRemovingChattering(const bool is_button_
     get_name(), check);
 
   return true;
+}
+
+void ButtonManager::PulishButtonPressNotification(const bool is_button_released, const float hold_down_time)
+{
+  auto msg = std::make_unique<autoware_state_machine_msgs::msg::VehicleButton>();
+  msg->stamp = this->now();
+  msg->data = is_button_released;
+  msg->hold_down_time = hold_down_time;
+  pub_button_->publish(std::move(msg));
 }
 
 }  // namespace button_manager
