@@ -133,6 +133,8 @@ void ButtonManager::ButtonState(const bool button_status_change)
           *get_clock(), 1.0,
           "[ButtonManager::ButtonState][button:%s]state change  : %d",
           get_name(), button_status_);
+      } else {
+        hold_down_time_ = elapsed_time;
       }
       break;
     case BUTTON_OFF_AFTER_ON_WAIT:
@@ -146,7 +148,9 @@ void ButtonManager::ButtonState(const bool button_status_change)
       } else {
         if (elapsed_time >= not_pressed_period_threshold_after_pressed_) {
           auto msg = std::make_unique<autoware_state_machine_msgs::msg::VehicleButton>();
+          msg->stamp = this->now();
           msg->data = true;
+          msg->hold_down_time = hold_down_time_;
           button_status_ = BUTTON_OFF_WAIT;
           pub_button_->publish(std::move(msg));
           RCLCPP_INFO_THROTTLE(
