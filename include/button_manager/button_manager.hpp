@@ -57,6 +57,7 @@ private:
   float not_pressed_period_threshold_after_pressed_ = 0.5;
   float max_allowable_period_of_pressing_ = 30.0;
   bool active_polarity_ = true;
+  float hold_down_time_ = 0.0;
 
   // Initial "port_value_" sets to false as OFF. This is going to overwritten by a first DIO input.
   bool port_value_ = false;
