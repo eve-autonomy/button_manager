@@ -17,11 +17,16 @@
 <launch>
     <arg name="button_name" default="button" />
     <arg name="port_name" default="din0" />
+    <!-- Chattering / stuck detection while driving. Common to both engage methods (use_double_button true/false). -->
+    <arg name="enable_abnormal_input_detection" default="true" />
 
     <node pkg="button_manager" exec="button_manager_node" name="$(var button_name)_manager" output="screen">
       <param name="use_sim_time" value="$(env AW_ROS2_USE_SIM_TIME false)" />
       <remap from="button_out" to="~/output/$(var button_name)" />
+      <remap from="button_pressed_out" to="~/output/$(var button_name)_pressed" />
       <remap from="button_in" to="/dio/$(var port_name)" />
+      <remap from="state_machine_in" to="/autoware_state_machine/state" />
       <param from="$(find-pkg-share button_manager)/config/button_manager.param.yaml" />
+      <param name="enable_abnormal_input_detection" value="$(var enable_abnormal_input_detection)" />
     </node>
 </launch>

@@ -32,3 +32,28 @@
 
     # Button polarity. "true" is "Active-high" and "false" is "Active-low."
     active_polarity: false
+
+    # ---- Abnormal input detection while driving (common to use_double_button true / false) ----
+    # enable_abnormal_input_detection (default true) is set by the launch argument.
+
+    # A press which continues for more than the following period is a "stuck" -> warning [sec]
+    # (measured from the press start)
+    stuck_detect_sec: 1.0
+    # A press which continues for more than the following period requests MRM [sec]
+    # (measured from the press start. the escalation to the emergency stop is done by the
+    # system_error_monitor)
+    mrm_after_press_sec: 30.0
+
+    # Chattering: more than "chatter_count_threshold" presses shorter than
+    # "chatter_short_press_max_sec" within "chatter_window_sec".
+    # Chattering is cleared when no event occurs for "chatter_clear_sec". (TBD: not decided yet)
+    chatter_short_press_max_sec: 1.0
+    chatter_count_threshold: 5
+    chatter_window_sec: 5.0
+    chatter_clear_sec: 2.0
+
+    # Period of the abnormal input detection [sec]
+    abnormal_detection_period: 0.1
+
+    # Period of publishing the diagnostics [sec]
+    diagnostics_period: 0.5

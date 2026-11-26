@@ -37,6 +37,12 @@ rclcpp_components_register_node(button_manager
   EXECUTABLE button_manager_node
 )
 
+if(BUILD_TESTING)
+  find_package(ament_cmake_gtest REQUIRED)
+  ament_add_gtest(test_abnormal_input_detector test/test_abnormal_input_detector.cpp)
+  target_include_directories(test_abnormal_input_detector PRIVATE include)
+endif()
+
 ament_auto_package(INSTALL_TO_SHARE
   launch
   config

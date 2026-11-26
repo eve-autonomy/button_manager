@@ -15,15 +15,21 @@
 #ifndef BUTTON_MANAGER__BUTTON_MANAGER_HPP_
 #define BUTTON_MANAGER__BUTTON_MANAGER_HPP_
 
+#include <memory>
 #include <string>
 #include <list>
 #include <vector>
 #include <climits>
 
 #include "rclcpp/rclcpp.hpp"
+#include "diagnostic_updater/diagnostic_updater.hpp"
+#include "std_msgs/msg/bool.hpp"
 
 #include "autoware_state_machine_msgs/msg/vehicle_button.hpp"
+#include "autoware_state_machine_msgs/msg/state_machine.hpp"
 #include "dio_ros_driver/msg/dio_port.hpp"
+
+#include "button_manager/abnormal_input_detector.hpp"
 
 namespace button_manager
 {
@@ -46,7 +52,18 @@ private:
   };
 
   rclcpp::Publisher<autoware_state_machine_msgs::msg::VehicleButton>::SharedPtr pub_button_;
+  // Debounced "is the button pressed" state. Published on every change.
+  rclcpp::Publisher<std_msgs::msg::Bool>::SharedPtr pub_button_pressed_;
   rclcpp::Subscription<dio_ros_driver::msg::DIOPort>::SharedPtr sub_dio_info_;
+  rclcpp::Subscription<autoware_state_machine_msgs::msg::StateMachine>::SharedPtr
+    sub_state_machine_;
+  rclcpp::TimerBase::SharedPtr timer_;
+
+  // Abnormal input (chattering / stuck) detection while driving
+  bool enable_abnormal_input_detection_ = false;
+  bool is_driving_ = false;
+  std::unique_ptr<button_manager::AbnormalInputDetector> abnormal_input_detector_;
+  diagnostic_updater::Updater updater_;
 
   enum NodeStatus button_status_ = BUTTON_OFF_WAIT;
   rclcpp::Time base_time_;
@@ -66,6 +83,11 @@ private:
   void Callback(const dio_ros_driver::msg::DIOPort::ConstSharedPtr msg);
   void ButtonState(const bool button_status_change);
   bool checkStateChangeWithRemovingChattering(const bool is_button_on);
+
+  void onStateMachine(const autoware_state_machine_msgs::msg::StateMachine::ConstSharedPtr msg);
+  void onTimer();
+  void publishPressed(const bool pressed);
+  void checkButtonInput(diagnostic_updater::DiagnosticStatusWrapper & stat);
 };
 
 }  // namespace button_manager

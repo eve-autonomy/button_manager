@@ -28,8 +28,13 @@
 
   <depend>rclcpp</depend>
   <depend>rclcpp_components</depend>
+  <depend>std_msgs</depend>
+  <depend>diagnostic_msgs</depend>
+  <depend>diagnostic_updater</depend>
   <depend>autoware_state_machine_msgs</depend>
   <depend>dio_ros_driver</depend>
+
+  <test_depend>ament_cmake_gtest</test_depend>
 
   <export>
     <build_type>ament_cmake</build_type>
