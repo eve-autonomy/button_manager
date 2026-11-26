@@ -252,7 +252,7 @@ void ButtonManager::checkButtonInput(diagnostic_updater::DiagnosticStatusWrapper
   using diagnostic_msgs::msg::DiagnosticStatus;
   const auto & s = abnormal_input_detector_->status();
   if (s.mrm) {
-    stat.summary(DiagnosticStatus::ERROR, "button is stuck: MRM");
+    stat.summary(DiagnosticStatus::ERROR, "button is stuck");
   } else if (s.warning) {
     stat.summary(
       DiagnosticStatus::WARN, s.stuck ? "button is stuck" : "button is chattering");
